@@ -260,7 +260,7 @@ Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Ener
 ```python
 import requests
 
-url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+url = "https://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
 payload = "full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-80.643  24.382)&names=2010&utc=true&leap_day=true"
 
@@ -304,3 +304,7 @@ For some tips and tricks to maximize data downloads please read the guide [here]
     </tr>
   </tbody>
 </table>
+
+<h2 id="citation">Citation</h2>
+
+Ahn, Seongho, V.S. Neary, M.N. Allahdadi, and R. He. 2021. “Nearshore Wave Energy Resource Characterization Along the East Coast of the United States.” <em>Renewable Energy</em> 172 (July 2021): 1212–1224. <a href="https://doi.org/10.1016/j.renene.2021.03.037">https://doi.org/10.1016/j.renene.2021.03.037</a>.

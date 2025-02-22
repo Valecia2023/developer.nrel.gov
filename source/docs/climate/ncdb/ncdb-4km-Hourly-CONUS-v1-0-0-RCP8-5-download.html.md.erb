@@ -1,10 +1,8 @@
 ---
-title: "NSRDB Full Disc"
-summary: "This data provides monthly average and annual average daily total solar resource averaged over surface cells of 0.02 degrees in both latitude and longitude, or nominally 2 km in size. The solar radiation values represent the resource available to solar energy systems. The data was created using cloud properties which are generated using the AVHRR Pathfinder Atmospheres-Extended (PATMOS-x) algorithms. Fast all-sky radiation model for solar applications (FARMS) in conjunction with the cloud properties, and aerosol optical depth (AOD) and precipitable water vapor (PWV) from ancillary source are used to estimate DNI and GHI. The direct normal irradiance (DNI) and GHI are computed for clear skies using the REST2 model. For cloud scenes identified by the cloud mask, the FARMS is used to compute the GHI. The DNI for cloud scenes is then computed using the DISC model."
-detail: "The PATMOS-X model uses 10 minute radiance images in visible and infrared channels from the GOES series of geostationary weather satellites, daily snow cover data from the NSIDC and mixing ratio, temperature and pressure profiles from the Modern Era-Retrospective Analysis (MERRA-2) dataset. The REST2 model uses hourly aerosol optical depth from MERRA-2 to calculate GHI and DNI; water vapor and other inputs for REST 2 are obtained from the MERRA-2."<br>
-<br>
-This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
-url: /api/nsrdb/v2/solar/full-disc-download
+title: "CONUS 2006-2100 60-minute, 4km, RCP8.5"
+summary: "The National Climate Database (NCDB) is a high-resolution, bias-corrected climate dataset including global horizontal irradiance, direct normal irradiance, and diffuse horizontal irradiance, as well as other meteorological data."
+detail: "The NCDB is developed using a statistical downscaling approach with Regional Climate Model (RCM)-based climate projections obtained from the North American Coordinated Regional Climate Downscaling Experiment (NA-CORDEX; https://na-cordex.org/). 0.22⁰ daily climate projections simulated by the Canadian Regional Climate Model 4 (CanRCM4) forced by the second-generation Canadian Earth System Model (CanESM2) for two Representative Concentration Pathways (RCP4.5 or moderate emissions scenario and RCP8.5 or highest baseline emission scenario) are selected as inputs to the statistical downscaling models. The National Solar Radiation Database (NSRDB) (Sengupta et al. 2018) is used to build and calibrate the statistical model. For more details please visit [the NCDB](https://climate.nrel.gov)."
+url: /api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -59,7 +57,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, alpha, aod, asymmetry, cld_opd_dcomp, cld_reff_dcomp, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, dew_point, dhi, dni, fill_flag, ghi, ozone, relative_humidity, solar_zenith_angle, ssa, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, dhi, dni, ghi, solar_zenith_angle, wind_speed.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -71,7 +69,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2019, 2020</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054, 2055, 2056, 2057, 2058, 2059, 2060, 2061, 2062, 2063, 2064, 2065, 2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076, 2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087, 2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098, 2099, 2100</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -101,11 +99,11 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> 15, 30 or 60</div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 15, 30 or 60 minute intervals are available.
+        This value determines data resolution. Either 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -206,59 +204,56 @@ The response is composed of service-related informational fields and the results
 Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support [SAM](https://sam.nrel.gov/) and other NREL models and is documented fully in [this PDF](https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf). More information on SAM file formats available on [the SAM weather page](https://sam.nrel.gov/weather).
 
 ## Examples
+Examples may not reflect this specific dataset.
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key={{API_KEY}}&attributes=alpha,aod,ghi,dni,dhi&names=2019&utc=true&leap_day=true&interval=10&email=user@company.com&wkt=POINT(-179.99 -15.94)</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com</code></div>
 
-```json
+```JSON
 {
     "inputs": {
-        "body": {},
-        "params": {},
         "query": {
-            "api_key": "{{API_KEY}}",
-            "attributes": "alpha,aod,ghi,dni,dhi",
-            "names": "2019",
-            "utc": "true",
+            "names": "2017",
+            "utc": "false",
             "leap_day": "true",
-            "interval": "10",
             "email": "user@company.com",
-            "wkt": "POINT(-179.99 -15.94)"
+            "wkt": "POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
         }
     },
     "metadata": {
         "version": "2.0.0",
         "resultset": {
-            "count": 1
+          "count": 1
         }
     },
     "status": 200,
     "outputs": {
         "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/solar/332e3704bbdc119e0fb9c6bdafbce0eb.zip"
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/ebc9bbbc34f91c65ac50707d43176c6c.zip"
     },
     "errors": []
 }
 ```
 
-
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key={{API_KEY}}&wkt=POINT(-179.99 -15.94)&attributes=alpha,aod,ghi,dni,dhi&names=2019&utc=true&leap_day=true&interval=30&email=user@company.com</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT(-179.99 -15.94)&attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com&api_key=DEMO_KEY</code></div>
 
 ```csv
-Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Version
-NSRDB,0,-,b'None',b'None',-15.94,-179.99,0,0,12,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,unknown
-Year,Month,Day,Hour,Minute,Alpha,AOD,GHI,DNI,DHI
-2019,1,1,0,0,1.02,0.0102,0,0,0
-2019,1,1,0,45,1.02,0.0111,0,0,0
-2019,1,1,1,30,1.02,0.0111,0,0,0
-2019,1,1,2,15,1.04,0.0122,0,0,0
-2019,1,1,3,0,1.06,0.013000000000000001,0,0,0
-2019,1,1,3,45,1.07,0.0134,0,0,0
-2019,1,1,4,30,1.07,0.0134,0,0,0
+SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
+80,-9,-9,-130.756,48.75498,b'Canada'
+Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
+2017,1,1,0,0,347.18
+2017,1,1,0,5,347.3
+2017,1,1,0,10,347.40000000000003
+2017,1,1,0,15,347.52
+2017,1,1,0,20,347.66
+2017,1,1,0,25,347.79
+2017,1,1,0,30,348
+2017,1,1,0,35,348.18
+2017,1,1,0,40,348.35
 ```
 
 ### POST request example in Python
@@ -268,7 +263,7 @@ import requests
 
 url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "api_key={{API_KEY}}&attributes=alpha,aod,ghi,dni,dhi&names=2019&utc=true&leap_day=true&interval=10&email=user@company.com&wkt=POINT(-179.99 -15.94)"
+payload = "api_key={{API_KEY}}&attributes=winddirection_180m&names=2017&utc=true&leap_day=true&interval=60&email=user@company.com&wkt=POINT(-179.99 -15.94)"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
@@ -290,7 +285,7 @@ Secondly each user is limited to 20 in-flight requests at any given time.
 
 In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
-For some tips and tricks to maximize data downloads please read the guide [here](/docs/solar/nsrdb/guide).
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/climate/ncdb/guide/).
 
 <h2 id="contacts">Contact</h2>
 
